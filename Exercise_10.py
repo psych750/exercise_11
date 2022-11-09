@@ -5,7 +5,7 @@ import os
 from math import sin, cos, pi
 from psychopy import visual, core, event
 
-win = visual.Window([300,300], color = 'black', units = 'pix', allowGUI = True)
+win = visual.Window([800,600], color = 'black', units = 'pix', allowGUI = True)
 my_mouse = event.Mouse(win=win)
 num_circles = 4
 
@@ -17,6 +17,12 @@ class MovingCircle():
         self.angle_moving_degrees = 0.0
         self.inter_step_interval = 2.0
         self.target = visual.Circle(win, size = 20, lineColor = 'black', fillColor = [1,1,1])
+
+    def change_speed(self,delta_speed):
+        self.inter_step_interval *= delta_speed
+
+    def make_dimmer(self,percent):
+        self.target.opacity *= percent
 
     def get_pos(self):
         return self.target.pos
@@ -44,13 +50,14 @@ class MovingCircle():
             self.prev_angle_to_deviate -= 180
             self.prev_angle_to_deviate %= 360
 
-    def turn_it_red():
-        "turns the circle red when you click on it without any pauses"
-
 circles = [MovingCircle(win) for _ in range(num_circles)]
 while True:
     for cur_circle in circles:
         cur_circle.target.draw()
+        if my_mouse.isPressedIn(cur_circle.target):
+            print('clicked on a circle!')
+            cur_circle.change_speed(.8)
+            cur_circle.make_dimmer(.9)
         cur_circle.move_it()
     
     core.wait(.05)
