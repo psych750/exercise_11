@@ -26,8 +26,8 @@ class MovingCircle():
 
     def move_it(self):
         "gets new position and set target to that position"
-        cur_angle_to_deviate = self.prev_angle_to_deviate + random.randint(self.min_angle,self.max_angle) # calcualte new angle
-        cur_angle = cur_angle_to_deviate * pi / 180.0 # covnert to radians
+        cur_angle_to_deviate = self.prev_angle_to_deviate + random.randint(self.min_angle,self.max_angle) # calculate new angle
+        cur_angle = cur_angle_to_deviate * pi / 180.0 # convert to radians
 
         new_x_pos = self.inter_step_interval * cos(cur_angle)
         new_y_pos = self.inter_step_interval * sin(cur_angle)
