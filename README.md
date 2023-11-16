@@ -1,3 +1,3 @@
-# Exercise_10
+# Exercise_11
 
-See [here](https://psych750.github.io/notebooks/Exercise10-oop_circles.html#) for more info
+See [here](https://psych750.github.io/notebooks/Exercise11-oop_circles.html#) for more info
